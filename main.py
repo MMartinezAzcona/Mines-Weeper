@@ -32,6 +32,9 @@ class Board:
                 continue
 
             board[row][col] = '*'
+            bombs_planted +=1
+
+        return board
 
     def assig_values_to_boad(self):
         # Assigns how many neighbouring bombs are in each location
@@ -51,6 +54,7 @@ class Board:
                     continue
                 elif self.board[r][c] == '*':
                     num_neighbor_bombs += 1
+        return num_neighbor_bombs
 
     def dig(self, row, col):
         # Returns TRUE if successful dig and FALSE if there is a bomb
@@ -129,7 +133,7 @@ def play(dim_size=10, num_bombs=10):
     # Step 3a: if location not a bomb --> dig recursively until each square is at next to a bomb
     # Step 4: Repeat steps 2 & 3 until no more places to  dig
 
-    safe = Tr
+    safe = True
 
     while len(board.dug) < board.dim_size ** 2 - num_bombs:
         print(board)
